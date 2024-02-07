@@ -1,0 +1,18 @@
+#@data/values
+#! This contains haproxy service specific values
+---
+services:
+- container_name: haproxy
+  image: cellaresctmpcontainerregistry.azurecr.io/haproxy:2.9.3
+  restart: unless-stopped
+  ports:
+  - 5673:5672
+  - 15673:15672
+  environment:
+    TZ: "America/Los_Angeles"
+  networks:
+    shuttle-network:
+      ipv4_address: 172.22.0.107
+  depends_on:
+    rabbitmq1:
+      condition: service_healthy

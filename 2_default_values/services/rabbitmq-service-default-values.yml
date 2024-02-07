@@ -1,0 +1,30 @@
+#@data/values
+#! This contains rabbitmq service specific values
+---
+services:
+- container_name: rabbitmq1
+  image: cellaresctmpcontainerregistry.azurecr.io/rabbitmq:3.12.12-management
+  restart: unless-stopped
+  ports:
+  - 5673:5672
+  - 15673:15672
+  environment:
+    TZ: "America/Los_Angeles"
+  volumes:
+    - type: bind
+      source: "C:/CellShuttle/docker-volumes/rabbitmq1/data/"
+      target: "/var/lib/rabbitmq/mnesia"
+    - type: bind
+      source: "C:/CellShuttle/docker-volumes/rabbitmq1/logs/"
+      target: "/var/log/rabbitmq"
+  networks:
+    shuttle-network:
+      ipv4_address: 172.22.0.110
+  healthcheck:
+    test:
+      - "CMD"
+      - "rabbitmq-diagnostics"
+      - "check_port_connectivity"
+    interval: 30s
+    timeout: 30s
+    retries: 30

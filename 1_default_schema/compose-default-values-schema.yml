@@ -1,0 +1,41 @@
+#@data/values-schema
+#! This is the schema/defaults for docker-compose  
+---
+version: '3.7'
+services:
+- container_name: ""
+  hostname: ""
+  image: ""
+  restart: never
+  ports:
+  - 8080:8080
+  #@schema/type any=True
+  environment: {}
+  #@schema/type any=True
+  dns:
+  - 172.22.0.100
+  - 1.1.1.1
+  volumes:
+  - type: bind
+    source: ""
+    target: ""
+  #@schema/type any=True
+  depends_on:
+  networks:
+    shuttle-network:
+      ipv4_address: ""
+  #@schema/type any=True
+  healthcheck:
+    test: "exit 0"
+    interval: 10s
+    timeout: 10s
+    retries: 1
+  logging:
+    driver: "json-file"
+    options:
+      max-size: "15m"
+      max-file: "1"
+networks:
+- name: ""
+  external: false
+

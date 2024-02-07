@@ -1,0 +1,9 @@
+#@data/values
+#! This contains shuttle-network specific values
+---
+networks:
+- name: shuttle-network
+  external: true
+
+
+

@@ -1,0 +1,28 @@
+#@ load("@ytt:data", "data")
+#! This is the template for docker-compose 
+
+version: #@ data.values.version
+
+services:
+  #@ for/end service in data.values.services:
+  - container_name: #@ service.container_name
+    hostname: #@ service.container_name
+    image: #@ service.image
+    restart: #@ service.restart
+    ports: #@ service.ports
+    environment: #@ service.environment
+    dns: #@ service.dns
+    volumes:
+    - type: bind
+      source: #@ "C:/CellShuttle/docker-volumes/" + service.container_name + "/etc/"
+      target: #@ "/usr/local/etc/" + service.container_name
+    networks: #@ service.networks
+    healthcheck: #@ service.healthcheck
+    logging: #@ service.logging
+    depends_on: #@ service.depends_on
+networks:
+  #@ for/end network in data.values.networks:
+  - name: #@ network.name
+    external: #@ network.external
+
+

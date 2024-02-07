@@ -1,0 +1,16 @@
+#@ load("@ytt:overlay", "overlay")
+#! This contains rabbitmq service specific default overlay values
+#@overlay/match by=overlay.all
+---
+services:
+#@overlay/match by="container_name"
+- container_name: rabbitmq1
+  #@overlay/match missing_ok=True
+  #@overlay/merge
+  volumes:
+  - type: bind
+    source: "C:/CellShuttle/docker-volumes/rabbitmq1/data/"
+    target: "/var/lib/rabbitmq/mnesia"
+  - type: bind
+    source: "C:/CellShuttle/docker-volumes/rabbitmq1/logs/"
+    target: "/var/log/rabbitmq"
