@@ -14,7 +14,7 @@ For documentation, refer [here](https://carvel.dev/ytt/docs/v0.46.x/), there are
 
 - Install [yq](https://mikefarah.gitbook.io/yq/) command line tool from [here](https://github.com/mikefarah/yq/#install)
 
-> Note: The number `x_` prefix on the folder name is very important for the order of applying in the [ytt](https://carvel.dev/ytt/) command.
+> Note: The number `x_` prefix on the folder name (schema --> values --> overlays) is very important for the order of applying in the [ytt](https://carvel.dev/ytt/) command.
 
 - The `1_default_schema` folder here contains the [ytt](https://carvel.dev/ytt/) template and values-schema. 
 
