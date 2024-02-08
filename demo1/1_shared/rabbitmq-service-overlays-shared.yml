@@ -1,5 +1,5 @@
 #@ load("@ytt:overlay", "overlay")
-#! This contains rabbitmq service specific default overlay values
+#! This contains rabbitmq service specific overlay values
 #@overlay/match by=overlay.all
 ---
 services:

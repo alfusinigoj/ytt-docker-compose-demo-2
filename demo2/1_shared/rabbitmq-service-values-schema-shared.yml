@@ -1,11 +1,11 @@
 #@data/values-schema
-#! This is the schema/defaults for docker-compose  
+#! This contains the value schema, shared values specifically for rabbitmq service  
 ---
 #@overlay/match missing_ok=True
 services:
   #@overlay/match missing_ok=True
   rabbitmq:
-    image: cellaresctmpcontainerregistry.azurecr.io/rabbitmq:3.12.12-management
+    image: mycompanyctmpcontainerregistry.azurecr.io/rabbitmq:3.12.12-management
     restart: unless-stopped
     healthcheck:
       #@schema/type any=True

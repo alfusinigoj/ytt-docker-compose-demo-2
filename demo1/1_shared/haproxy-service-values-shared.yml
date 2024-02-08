@@ -3,7 +3,7 @@
 ---
 services:
 - container_name: haproxy
-  image: cellaresctmpcontainerregistry.azurecr.io/haproxy:2.9.3
+  image: mycompanyctmpcontainerregistry.azurecr.io/haproxy:2.9.3
   restart: unless-stopped
   ports:
   - 5673:5672

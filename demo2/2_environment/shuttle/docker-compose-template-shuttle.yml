@@ -1,5 +1,5 @@
 #@ load("@ytt:data", "data")
-#! This is the template for docker-compose 
+#! This is the base template for docker-compose specific to shuttle environment
 
 version: #@ data.values.version
 

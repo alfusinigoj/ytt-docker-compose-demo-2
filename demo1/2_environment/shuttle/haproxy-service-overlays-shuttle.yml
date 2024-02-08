@@ -1,5 +1,5 @@
 #@ load("@ytt:overlay", "overlay")
-#! This contains db service specific values for development
+#! This contains haproxy service specific overlay values for shuttle environment
 #@overlay/match by=overlay.all
 ---
 services:

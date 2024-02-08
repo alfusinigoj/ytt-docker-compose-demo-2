@@ -1,5 +1,5 @@
 #@data/values-schema
-#! This is the schema/defaults for docker-compose  
+#! This contains the value schema, shared values specifically for haproxy service  
 ---
 #@overlay/match missing_ok=True
 services:
@@ -7,7 +7,7 @@ services:
   haproxy:
     container_name: haproxy
     hostname: haproxy
-    image: cellaresctmpcontainerregistry.azurecr.io/haproxy:2.9.3
+    image: mycompanyctmpcontainerregistry.azurecr.io/haproxy:2.9.3
     restart: unless-stopped
     #@schema/type any=True
     ports:

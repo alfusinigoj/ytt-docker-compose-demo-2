@@ -3,7 +3,7 @@
 ---
 services:
 - container_name: rabbitmq1
-  image: cellaresctmpcontainerregistry.azurecr.io/rabbitmq:3.12.12-management
+  image: mycompanyctmpcontainerregistry.azurecr.io/rabbitmq:3.12.12-management
   restart: unless-stopped
   ports:
   - 5673:5672

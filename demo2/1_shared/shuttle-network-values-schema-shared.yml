@@ -1,5 +1,5 @@
 #@data/values-schema
-#! This is the schema/defaults for docker-compose  
+#! This contains the value schema, shared values specifically for shuttle network   
 ---
 #@overlay/match missing_ok=True
 networks:

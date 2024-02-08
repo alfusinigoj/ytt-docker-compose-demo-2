@@ -1,5 +1,5 @@
 #@ load("@ytt:overlay", "overlay")
-#! This contains db service specific values for development
+#! This contains rabbitmq service specific overlay values for local environment
 #@overlay/match by=overlay.all
 ---
 services:
@@ -9,4 +9,4 @@ services:
   #@overlay/merge
   environment:
     #@overlay/match missing_ok=True
-    RABBITMQ_ERLANG_COOKIE: "cellares-rabbitmq-cookie-local"
+    RABBITMQ_ERLANG_COOKIE: "mycompany-rabbitmq-cookie-local"

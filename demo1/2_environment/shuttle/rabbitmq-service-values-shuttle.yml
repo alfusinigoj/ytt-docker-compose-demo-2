@@ -1,8 +1,9 @@
 #@data/values
+#! This contains rabbitmq service specific values for shuttle environment
 ---
 services:
 - container_name: rabbitmq2
-  image: cellaresctmpcontainerregistry.azurecr.io/rabbitmq:3.12.12-management
+  image: mycompanyctmpcontainerregistry.azurecr.io/rabbitmq:3.12.12-management
   restart: unless-stopped
   ports:
   - 5674:5672
@@ -32,14 +33,14 @@ services:
     rabbitmq1:
       condition: service_healthy
 - container_name: rabbitmq3
-  image: cellaresctmpcontainerregistry.azurecr.io/rabbitmq:3.12.12-management
+  image: mycompanyctmpcontainerregistry.azurecr.io/rabbitmq:3.12.12-management
   restart: unless-stopped
   ports:
   - 5674:5672
   - 15674:15672
   environment:
     TZ: "America/Los_Angeles"
-    RABBITMQ_ERLANG_COOKIE: "cellares-rabbitmq-cookie"
+    RABBITMQ_ERLANG_COOKIE: "mycompany-rabbitmq-cookie"
   volumes:
     - type: bind
       source: "C:/CellShuttle/docker-volumes/rabbitmq3/data/"

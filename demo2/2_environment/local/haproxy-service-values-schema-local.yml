@@ -1,5 +1,5 @@
 #@data/values-schema
-#! This is the schema/defaults for docker-compose  
+#! This contains the value schema, values specifically for haproxy service in local environment
 ---
 #@overlay/match missing_ok=True
 services: 
