@@ -32,3 +32,10 @@
     ytt -f ./demo1/1_shared -f ./demo1/2_environment/shuttle | yq eval '.services |= with_entries(.key = .value.container_name)' | yq eval '.networks |= with_entries(.key = .value.name)' | docker compose -f- up
     ```
 
+### Pros
+- Dynamic
+- Recommended for common and similar components, e.g. microservices
+
+### Cons
+- Difficult to understand what is expected
+- Needs an additional tool [yq](https://mikefarah.gitbook.io/yq/)

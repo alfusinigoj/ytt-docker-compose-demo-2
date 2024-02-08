@@ -6,8 +6,8 @@ services:
   image: mycompanyctmpcontainerregistry.azurecr.io/haproxy:2.9.3
   restart: unless-stopped
   ports:
-  - 5673:5672
-  - 15673:15672
+  - 5672:5672
+  - 15672:15672
   environment:
     TZ: "America/Los_Angeles"
   networks:

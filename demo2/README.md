@@ -29,3 +29,13 @@
     ```sh
     ytt -f ./demo2/1_shared -f ./demo2/2_environment/shuttle | docker compose -f- up
     ```
+
+### Pros
+- Declarative
+- Easy to understand what is expected
+- No need of [yq](https://mikefarah.gitbook.io/yq/)
+- Recommended for infrastructure/backend services
+
+### Cons
+- Verbose
+- Making change to repeated blocks need to be applied everywhere
