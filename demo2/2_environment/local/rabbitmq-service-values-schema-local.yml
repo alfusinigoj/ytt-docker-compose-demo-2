@@ -1,0 +1,31 @@
+#@data/values-schema
+#! This is the schema/defaults for docker-compose  
+---
+#@overlay/match missing_ok=True
+services:
+  #@overlay/match missing_ok=True
+  rabbitmq1:
+    container_name: rabbitmq1
+    hostname: rabbitmq1
+    #@schema/type any=True
+    ports:
+      - 5673:5672
+      - 15673:15672
+    environment:
+      TZ: America/Los_Angeles
+      RABBITMQ_ERLANG_COOKIE: cellares-rabbitmq-cookie-local
+    #@schema/type any=True
+    volumes:
+      - type: bind
+        source: C:/CellShuttle/docker-volumes/rabbitmq1/etc/
+        target: /usr/local/etc/rabbitmq1
+      - type: bind
+        source: C:/CellShuttle/docker-volumes/rabbitmq1/data/
+        target: /var/lib/rabbitmq/mnesia
+      - type: bind
+        source: C:/CellShuttle/docker-volumes/rabbitmq1/logs/
+        target: /var/log/rabbitmq
+    networks:
+      shuttle-network:
+        ipv4_address: 172.22.0.110
+    depends_on: {}

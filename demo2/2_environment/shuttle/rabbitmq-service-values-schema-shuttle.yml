@@ -1,0 +1,89 @@
+#@data/values-schema
+#! This is the schema/defaults for docker-compose  
+---
+#@overlay/match missing_ok=True
+services:
+  #@overlay/match missing_ok=True
+  rabbitmq1:
+    container_name: rabbitmq1
+    hostname: rabbitmq1
+    #@schema/type any=True
+    ports:
+      - 5673:5672
+      - 15673:15672
+    environment:
+      TZ: America/Los_Angeles
+      RABBITMQ_ERLANG_COOKIE: cellares-rabbitmq-cookie-local
+    #@schema/type any=True
+    volumes:
+      - type: bind
+        source: C:/CellShuttle/docker-volumes/rabbitmq1/etc/
+        target: /usr/local/etc/rabbitmq1
+      - type: bind
+        source: C:/CellShuttle/docker-volumes/rabbitmq1/data/
+        target: /var/lib/rabbitmq/mnesia
+      - type: bind
+        source: C:/CellShuttle/docker-volumes/rabbitmq1/logs/
+        target: /var/log/rabbitmq
+    networks:
+      shuttle-network:
+        ipv4_address: 172.22.0.110
+    depends_on: {}
+  #@overlay/match missing_ok=True
+  rabbitmq2:
+    container_name: rabbitmq2
+    hostname: rabbitmq2
+    #@schema/type any=True
+    ports:
+      - 5674:5672
+      - 15674:15672
+    environment:
+      TZ: America/Los_Angeles
+      RABBITMQ_ERLANG_COOKIE: cellares-rabbitmq-cookie-shuttle
+    #@schema/type any=True
+    volumes:
+      - type: bind
+        source: C:/CellShuttle/docker-volumes/rabbitmq2/etc/
+        target: /usr/local/etc/rabbitmq2
+      - type: bind
+        source: C:/CellShuttle/docker-volumes/rabbitmq2/data/
+        target: /var/lib/rabbitmq/mnesia
+      - type: bind
+        source: C:/CellShuttle/docker-volumes/rabbitmq2/logs/
+        target: /var/log/rabbitmq
+    networks:
+      shuttle-network:
+        ipv4_address: 172.22.0.110
+    depends_on:
+      rabbitmq2:
+        condition: service_healthy
+  #@overlay/match missing_ok=True
+  rabbitmq3:
+    container_name: rabbitmq3
+    hostname: rabbitmq3
+    #@schema/type any=True
+    ports:
+      - 5675:5672
+      - 15675:15672
+    environment:
+      TZ: America/Los_Angeles
+      RABBITMQ_ERLANG_COOKIE: cellares-rabbitmq-cookie-shuttle
+    #@schema/type any=True
+    volumes:
+      - type: bind
+        source: C:/CellShuttle/docker-volumes/rabbitmq3/etc/
+        target: /usr/local/etc/rabbitmq3
+      - type: bind
+        source: C:/CellShuttle/docker-volumes/rabbitmq3/data/
+        target: /var/lib/rabbitmq/mnesia
+      - type: bind
+        source: C:/CellShuttle/docker-volumes/rabbitmq3/logs/
+        target: /var/log/rabbitmq
+    networks:
+      shuttle-network:
+        ipv4_address: 172.22.0.110
+    depends_on:
+      rabbitmq2:
+        condition: service_healthy
+
+

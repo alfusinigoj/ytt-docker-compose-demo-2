@@ -16,3 +16,4 @@ logging:
   options:
     max-size: 15m
     max-file: "1"
+

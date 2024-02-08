@@ -1,0 +1,30 @@
+#@data/values-schema
+#! This is the schema/defaults for docker-compose  
+---
+#@overlay/match missing_ok=True
+services:
+  #@overlay/match missing_ok=True
+  haproxy:
+    container_name: haproxy
+    hostname: haproxy
+    image: cellaresctmpcontainerregistry.azurecr.io/haproxy:2.9.3
+    restart: unless-stopped
+    #@schema/type any=True
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      TZ: America/Los_Angeles
+    volumes:
+      - type: bind
+        source: C:/CellShuttle/docker-volumes/haproxy/etc/
+        target: /usr/local/etc/haproxy
+    networks:
+      shuttle-network:
+        ipv4_address: 172.22.0.107
+    healthcheck:
+      test: exit 0
+      interval: 10s
+      timeout: 10s
+      retries: 1
+

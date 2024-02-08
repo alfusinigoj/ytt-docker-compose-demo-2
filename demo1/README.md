@@ -8,29 +8,27 @@
 
 > Note: The number `x_` prefix on the folder name (schema --> values --> overlays) is very important for the order of applying in the [ytt](https://carvel.dev/ytt/) command.
 
-- The `1_default_schema` folder here contains the [ytt](https://carvel.dev/ytt/) template and values-schema. 
+- The `1_shared` folder here contains the shared [ytt](https://carvel.dev/ytt/) template, values-schema, values, overlays, etc. 
 
-- The `2_default_values` folder here contains the [ytt](https://carvel.dev/ytt/) default values. 
+- The `2_environment` folder here contains the environment specific [ytt](https://carvel.dev/ytt/) template, values-schema, values, overlays, etc.
 
-- The `3_default_overlays` folder here contains the [ytt](https://carvel.dev/ytt/) overlays. 
-
-- The environment folder contains `local`, `shuttle`, etc. which represents the target environments where it contains values and overlays as needed.
+- The environment folder contains `local`, `shuttle`, etc. which represents the target environments where it contains **values and overlays only** as needed.
 
 - To demonstrate the example, to create `docker-compose.yml` for `local` environment, execute below code from the root. 
 
     ```sh
-    ytt -f ./demo1/1_default_schema  -f ./demo1/2_default_values -f ./demo1/3_default_overlays -f ./demo1/environment/local/1_values -f ./demo1/environment/local/2_overlays | yq eval '.services |= with_entries(.key = .value.container_name)' | yq eval '.networks |= with_entries(.key = .value.name)' > docker-compose-demo1-local.yml
+    ytt -f ./demo1/1_shared -f ./demo1/2_environment/local | yq eval '.services |= with_entries(.key = .value.container_name)' | yq eval '.networks |= with_entries(.key = .value.name)' > docker-compose-demo1-local.yml
     ```
 
 - To demonstrate the example, to create `docker-compose.yml` for `shuttle` environment, execute below code from the root. 
 
     ```sh
-    ytt -f ./demo1/1_default_schema  -f ./demo1/2_default_values -f ./demo1/3_default_overlays -f ./demo1/environment/shuttle/1_values -f ./demo1/environment/shuttle/2_overlays | yq eval '.services |= with_entries(.key = .value.container_name)' | yq eval '.networks |= with_entries(.key = .value.name)' > docker-compose-demo1-shuttle.yml
+    ytt -f ./demo1/1_shared -f ./demo1/2_environment/shuttle | yq eval '.services |= with_entries(.key = .value.container_name)' | yq eval '.networks |= with_entries(.key = .value.name)' > docker-compose-demo1-shuttle.yml
     ```
 
 - To execute `docker compose up` from the produced output inline, execute the below command. This command targets the local environment.
     
     ```sh
-    ytt -f ./demo1/1_default_schema  -f ./demo1/2_default_values -f ./demo1/3_default_overlays -f ./demo1/environment/local/1_values -f ./demo1/environment/local/2_overlays | yq eval '.services |= with_entries(.key = .value.container_name)' | yq eval '.networks |= with_entries(.key = .value.name)' | docker compose -f- up
+    ytt -f ./demo1/1_shared -f ./demo1/2_environment/shuttle | yq eval '.services |= with_entries(.key = .value.container_name)' | yq eval '.networks |= with_entries(.key = .value.name)' | docker compose -f- up
     ```
 

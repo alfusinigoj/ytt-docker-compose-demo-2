@@ -2,8 +2,9 @@
 #! This is the schema/defaults for docker-compose  
 ---
 #@overlay/match missing_ok=True
-haproxy:
+networks:
   #@overlay/match missing_ok=True
-  depends_on:
-    rabbitmq3:
-      condition: service_healthy
+  shuttle:
+    name: shuttle
+    external: true
+

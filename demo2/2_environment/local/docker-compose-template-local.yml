@@ -5,33 +5,33 @@ version: #@ data.values.version
 
 services:
   haproxy:
-    container_name: #@ data.values.haproxy.container_name
-    hostname: #@ data.values.haproxy.hostname
-    image: #@ data.values.haproxy.image
-    restart: #@ data.values.haproxy.restart
-    ports: #@ data.values.haproxy.ports
-    environment: #@ data.values.haproxy.environment
+    container_name: #@ data.values.services.haproxy.container_name
+    hostname: #@ data.values.services.haproxy.hostname
+    image: #@ data.values.services.haproxy.image
+    restart: #@ data.values.services.haproxy.restart
+    ports: #@ data.values.services.haproxy.ports
+    environment: #@ data.values.services.haproxy.environment
     dns: #@ data.values.dns
-    volumes: #@ data.values.haproxy.volumes
-    networks: #@ data.values.haproxy.networks
-    healthcheck: #@ data.values.haproxy.healthcheck
+    volumes: #@ data.values.services.haproxy.volumes
+    networks: #@ data.values.services.haproxy.networks
+    healthcheck: #@ data.values.services.haproxy.healthcheck
     logging: #@ data.values.logging
-    depends_on: #@ data.values.haproxy.depends_on
+    depends_on: #@ data.values.services.haproxy.depends_on
   rabbitmq1:
-    container_name: #@ data.values.rabbitmq1.container_name
-    hostname: #@ data.values.rabbitmq1.hostname
-    image: #@ data.values.rabbitmq.image
-    restart: #@ data.values.rabbitmq.restart
-    ports: #@ data.values.rabbitmq1.ports
-    environment: #@ data.values.rabbitmq1.environment
+    container_name: #@ data.values.services.rabbitmq1.container_name
+    hostname: #@ data.values.services.rabbitmq1.hostname
+    image: #@ data.values.services.rabbitmq.image
+    restart: #@ data.values.services.rabbitmq.restart
+    ports: #@ data.values.services.rabbitmq1.ports
+    environment: #@ data.values.services.rabbitmq1.environment
     dns: #@ data.values.dns
-    volumes: #@ data.values.rabbitmq1.volumes
-    networks: #@ data.values.rabbitmq1.networks
-    healthcheck: #@ data.values.rabbitmq.healthcheck
+    volumes: #@ data.values.services.rabbitmq1.volumes
+    networks: #@ data.values.services.rabbitmq1.networks
+    healthcheck: #@ data.values.services.rabbitmq.healthcheck
     logging: #@ data.values.logging
-    depends_on: #@ data.values.rabbitmq1.depends_on
-    entrypoint: #@ data.values.rabbitmq.entrypoint
+    depends_on: #@ data.values.services.rabbitmq1.depends_on
+    entrypoint: #@ data.values.services.rabbitmq.entrypoint
 networks:
-  shuttlenetwork:
-    name: #@ data.values.shuttlenetwork.name
-    external: #@ data.values.shuttlenetwork.external
+  shuttle:
+    name: #@ data.values.networks.shuttle.name
+    external: #@ data.values.networks.shuttle.external
