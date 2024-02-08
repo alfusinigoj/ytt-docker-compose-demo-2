@@ -27,6 +27,7 @@ services:
     interval: 30s
     timeout: 30s
     retries: 30
+  entrypoint: /etc/rabbitmq/cluster-entrypoint.sh
   depends_on:
     rabbitmq1:
       condition: service_healthy
@@ -57,6 +58,7 @@ services:
     interval: 30s
     timeout: 30s
     retries: 30
+  entrypoint: /etc/rabbitmq/cluster-entrypoint.sh
   depends_on:
     rabbitmq2:
       condition: service_healthy

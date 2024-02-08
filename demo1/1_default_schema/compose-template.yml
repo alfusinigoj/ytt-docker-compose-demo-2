@@ -19,6 +19,7 @@ services:
     networks: #@ service.networks
     healthcheck: #@ service.healthcheck
     logging: #@ service.logging
+    entrypoint: #@ service.entrypoint
     depends_on: #@ service.depends_on
 networks:
   #@ for/end network in data.values.networks:

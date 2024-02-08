@@ -20,7 +20,7 @@ services:
     source: ""
     target: ""
   #@schema/type any=True
-  depends_on:
+  depends_on: {}
   networks:
     shuttle-network:
       ipv4_address: ""
@@ -35,6 +35,8 @@ services:
     options:
       max-size: "15m"
       max-file: "1"
+  #@schema/type any=True
+  entrypoint: null
 networks:
 - name: ""
   external: false

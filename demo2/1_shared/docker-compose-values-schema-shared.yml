@@ -1,0 +1,18 @@
+#@data/values-schema
+#! This is the schema/defaults for docker-compose  
+---
+#@overlay/match missing_ok=True
+version: "3.7"
+
+#@overlay/match missing_ok=True
+#@schema/type any=True
+dns:
+  - 172.22.0.100
+  - 1.1.1.1
+
+#@overlay/match missing_ok=True
+logging:
+  driver: json-file
+  options:
+    max-size: 15m
+    max-file: "1"

@@ -1,0 +1,9 @@
+#@data/values-schema
+#! This is the schema/defaults for docker-compose  
+---
+#@overlay/match missing_ok=True
+haproxy:
+  #@overlay/match missing_ok=True
+  depends_on:
+    rabbitmq1:
+      condition: service_healthy
