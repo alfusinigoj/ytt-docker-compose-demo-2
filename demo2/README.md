@@ -10,6 +10,8 @@
 
 - The `2_environment` folder here contains the environment specific [ytt](https://carvel.dev/ytt/) template, values-schema, values, overlays, etc.
 
+> Note: [ytt](https://carvel.dev/ytt/) takes the defined types in the following order. Template, values-schema, values & overlays
+
 - The environment folder contains `local`, `shuttle`, etc. which represents the target environments where it contains **template, values-schema, values, overlays, etc** as needed.
 
 - To demonstrate the example, to create `docker-compose.yml` for `local` environment, execute below code from the root. 
