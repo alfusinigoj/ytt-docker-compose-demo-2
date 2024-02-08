@@ -4,7 +4,7 @@
 
 - Install [ytt](https://carvel.dev/ytt/) command line tool from [here](https://carvel.dev/ytt/docs/v0.46.x/install/)
 
-> Note: The number `x_` prefix on the folder name (shared --> environment) is very important for the order of applying in the [ytt](https://carvel.dev/ytt/) command.
+> Note: The number `x_` prefix on the folder name (shared --> environment) is for understanding saying that its better to use them in order while using in the command.
 
 - The `1_shared` folder here contains the shared [ytt](https://carvel.dev/ytt/) template, values-schema, values, overlays, etc. 
 
