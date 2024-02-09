@@ -1,4 +1,4 @@
-This repo shows a simple demonstration of using [ytt](https://carvel.dev/ytt/) and [yq](https://mikefarah.gitbook.io/yq) to generate docker compose file for for Rabbitmq HA, targeting multiple environments.
+This repo shows a simple demonstration of using [ytt](https://carvel.dev/ytt/) and [yq](https://mikefarah.gitbook.io/yq) to generate docker compose file targeting multiple environments, but using real example of building a highly available rabbitmq cluster together with haproxy.
 
 ### What is [ytt](https://carvel.dev/ytt/)?
 
