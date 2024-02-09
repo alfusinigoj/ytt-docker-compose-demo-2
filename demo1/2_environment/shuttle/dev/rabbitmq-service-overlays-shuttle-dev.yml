@@ -1,0 +1,28 @@
+#@ load("@ytt:overlay", "overlay")
+#! This contains rabbitmq service specific overlay values for shuttle dev environment
+#@overlay/match by=overlay.all
+---
+services:
+#@overlay/match by="container_name"
+- container_name: rabbitmq1
+  #@overlay/match missing_ok=True
+  #@overlay/merge
+  environment:
+    #@overlay/match missing_ok=True
+    RABBITMQ_ERLANG_COOKIE: "mycompany-rabbitmq-cookie-shuttle-dev"
+
+#@overlay/match by="container_name"
+- container_name: rabbitmq2
+  #@overlay/match missing_ok=True
+  #@overlay/merge
+  environment:
+    #@overlay/match missing_ok=True
+    RABBITMQ_ERLANG_COOKIE: "mycompany-rabbitmq-cookie-shuttle-dev"
+
+#@overlay/match by="container_name"
+- container_name: rabbitmq3
+  #@overlay/match missing_ok=True
+  #@overlay/merge
+  environment:
+    #@overlay/match missing_ok=True
+    RABBITMQ_ERLANG_COOKIE: "mycompany-rabbitmq-cookie-shuttle-dev"

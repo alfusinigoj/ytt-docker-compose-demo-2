@@ -1,5 +1,5 @@
 #@data/values-schema
-#! This contains the value schema, values specifically for rabbitmq service in shuttle environment  
+#! This contains the value schema, values specifically for rabbitmq service in shuttle environment shared
 ---
 #@overlay/match missing_ok=True
 services:
@@ -13,7 +13,7 @@ services:
       - 15673:15672
     environment:
       TZ: America/Los_Angeles
-      RABBITMQ_ERLANG_COOKIE: mycompany-rabbitmq-cookie-local
+      RABBITMQ_ERLANG_COOKIE: ""
     #@schema/type any=True
     volumes:
       - type: bind
@@ -39,7 +39,7 @@ services:
       - 15674:15672
     environment:
       TZ: America/Los_Angeles
-      RABBITMQ_ERLANG_COOKIE: mycompany-rabbitmq-cookie-shuttle
+      RABBITMQ_ERLANG_COOKIE: ""
     #@schema/type any=True
     volumes:
       - type: bind
@@ -67,7 +67,7 @@ services:
       - 15675:15672
     environment:
       TZ: America/Los_Angeles
-      RABBITMQ_ERLANG_COOKIE: mycompany-rabbitmq-cookie-shuttle
+      RABBITMQ_ERLANG_COOKIE: ""
     #@schema/type any=True
     volumes:
       - type: bind

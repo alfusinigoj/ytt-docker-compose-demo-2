@@ -16,16 +16,22 @@
 
 - The environment folder contains `local`, `shuttle`, etc. which represents the target environments where it contains **values and overlays only** as needed.
 
-- To demonstrate the example, to create `docker-compose.yml` for `local` environment, execute below code from the root. 
+- To demonstrate the example, to create `docker-compose-demo1-local.yml` for `local` environment, execute below code from the root. 
 
     ```sh
     ytt -f ./demo1/1_shared -f ./demo1/2_environment/local | yq eval '.services |= with_entries(.key = .value.container_name)' | yq eval '.networks |= with_entries(.key = .value.name)' > docker-compose-demo1-local.yml
     ```
 
-- To demonstrate the example, to create `docker-compose.yml` for `shuttle` environment, execute below code from the root. 
+- To demonstrate the example, to create `docker-compose-demo1-shuttle-dev.yml` for `shuttle-dev` environment, execute below code from the root. 
 
     ```sh
-    ytt -f ./demo1/1_shared -f ./demo1/2_environment/shuttle | yq eval '.services |= with_entries(.key = .value.container_name)' | yq eval '.networks |= with_entries(.key = .value.name)' > docker-compose-demo1-shuttle.yml
+    ytt -f ./demo1/1_shared -f ./demo1/2_environment/shuttle/shared -f ./demo1/2_environment/shuttle/dev | yq eval '.services |= with_entries(.key = .value.container_name)' | yq eval '.networks |= with_entries(.key = .value.name)' > docker-compose-demo1-shuttle-dev.yml
+    ```
+
+- To demonstrate the example, to create `docker-compose-demo1-shuttle-prod.yml` for `shuttle-dev` environment, execute below code from the root. 
+
+    ```sh
+    ytt -f ./demo1/1_shared -f ./demo1/2_environment/shuttle/shared -f ./demo1/2_environment/shuttle/prod | yq eval '.services |= with_entries(.key = .value.container_name)' | yq eval '.networks |= with_entries(.key = .value.name)' > docker-compose-demo1-shuttle-prod.yml
     ```
 
 - To execute `docker compose up` from the produced output inline, execute the below command. This command targets the local environment.

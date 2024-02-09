@@ -14,16 +14,22 @@
 
 - The environment folder contains `local`, `shuttle`, etc. which represents the target environments where it contains **template, values-schema, values, overlays, etc** as needed.
 
-- To demonstrate the example, to create `docker-compose.yml` for `local` environment, execute below code from the root. 
+- To demonstrate the example, to create `docker-compose-demo2-local.yml` for `local` environment, execute below code from the root. 
 
     ```sh
     ytt -f ./demo2/1_shared -f ./demo2/2_environment/local > docker-compose-demo2-local.yml
     ```
 
-- To demonstrate the example, to create `docker-compose.yml` for `shuttle` environment, execute below code from the root. 
+- To demonstrate the example, to create `docker-compose-demo2-shuttle-dev.yml` for `shuttle-dev` environment, execute below code from the root. 
 
     ```sh
-    ytt -f ./demo2/1_shared -f ./demo2/2_environment/shuttle > docker-compose-demo2-shuttle.yml
+    ytt -f ./demo2/1_shared -f ./demo2/2_environment/shuttle/shared -f ./demo2/2_environment/shuttle/dev > docker-compose-demo2-shuttle-dev.yml
+    ```
+
+- To demonstrate the example, to create `docker-compose-demo2-shuttle-prod.yml` for `shuttle-prod` environment, execute below code from the root. 
+
+    ```sh
+    ytt -f ./demo2/1_shared -f ./demo2/2_environment/shuttle/shared -f ./demo2/2_environment/shuttle/prod > docker-compose-demo2-shuttle-prod.yml
     ```
 
 - To execute `docker compose up` from the produced output inline, execute the below command. This command targets the local environment.

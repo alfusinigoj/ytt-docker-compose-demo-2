@@ -1,5 +1,5 @@
 #@data/values-schema
-#! This contains the value schema, values specifically for haproxy service in shuttle environment
+#! This contains the value schema, values specifically for haproxy service in shuttle environment shared
 ---
 #@overlay/match missing_ok=True
 services:

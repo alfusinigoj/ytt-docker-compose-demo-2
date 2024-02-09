@@ -1,0 +1,23 @@
+#@ load("@ytt:overlay", "overlay")
+#! This contains rabbitmq service specific overlay values for shuttle prod environment
+#@overlay/match by=overlay.all
+---
+services:
+  rabbitmq1:
+    #@overlay/match missing_ok=True
+    #@overlay/merge
+    environment:
+      #@overlay/match missing_ok=True
+      RABBITMQ_ERLANG_COOKIE: "mycompany-rabbitmq-cookie-shuttle-prod"
+  rabbitmq2:
+    #@overlay/match missing_ok=True
+    #@overlay/merge
+    environment:
+      #@overlay/match missing_ok=True
+      RABBITMQ_ERLANG_COOKIE: "mycompany-rabbitmq-cookie-shuttle-prod"
+  rabbitmq3:
+    #@overlay/match missing_ok=True
+    #@overlay/merge
+    environment:
+      #@overlay/match missing_ok=True
+      RABBITMQ_ERLANG_COOKIE: "mycompany-rabbitmq-cookie-shuttle-prod"
