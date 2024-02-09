@@ -6,13 +6,13 @@
 
 - Install [yq](https://mikefarah.gitbook.io/yq/) command line tool from [here](https://github.com/mikefarah/yq/#install)
 
-> Note: The number `x_` prefix on the folder name (shared --> environment) is for understanding saying that its better to use them in order while using in the command.
+    > Note: The number `x_` prefix on the folder name (shared --> environment) is for understanding saying that its better to use them in order while using in the command.
 
 - The `1_shared` folder here contains the shared [ytt](https://carvel.dev/ytt/) template, values-schema, values, overlays, etc. 
 
 - The `2_environment` folder here contains the environment specific [ytt](https://carvel.dev/ytt/) template, values-schema, values, overlays, etc.
 
-> Note: [ytt](https://carvel.dev/ytt/) takes the defined types in the following order. Template, values-schema, values & overlays
+    > Note: [ytt](https://carvel.dev/ytt/) takes the defined types in the following order. Template, values-schema, values & overlays
 
 - The environment folder contains `local`, `shuttle`, etc. which represents the target environments where it contains **values and overlays only** as needed.
 

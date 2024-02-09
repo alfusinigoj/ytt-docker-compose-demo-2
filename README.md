@@ -14,3 +14,8 @@ For documentation, refer [here](https://carvel.dev/ytt/docs/v0.46.x/), there are
 
 - Documentation from **Tanzu Development Center**, [Getting Started with ytt](https://tanzu.vmware.com/developer/guides/ytt-gs/)
 - Refer this [docker-compose](https://github.com/UKP-SQuARE/square-core/blob/master/docker-compose.ytt.yaml) file for usage of [ytt](https://carvel.dev/ytt/) extensively.
+- Yaml Comparison tool [dyff](https://github.com/homeport/dyff) can be used to compare your generated file against a base, using below command syntax.
+
+    ```sh
+    dyff between <file1.yml> <file2.yml>
+    ```
